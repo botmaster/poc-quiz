@@ -1,0 +1,23 @@
+
+// Sass and Tailwind issues
+// Im not able to use @use to import "base" and "components" because it will be loaded before Tailwind CSS
+// I need to use @import instead of @use to import "base" and "components" inside @layer base.
+
+//@use "base";
+//@use "components";
+
+@tailwind base;
+@tailwind components;
+@import "@/assets/styles/vendors"; // <-- Placed here because to prevent to be removed by unused CSS purge. See https://tailwindcss.com/docs/content-configuration#working-with-third-party-libraries
+@tailwind utilities;
+
+@layer base {
+  @import "base";
+  @import "components";
+
+  // Fix select arrow
+  select.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  }
+}
+

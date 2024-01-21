@@ -1,0 +1,70 @@
+{
+  "button": {
+    "about": "À propos",
+    "back": "Retour",
+    "go": "Essayer",
+    "home": "Accueil",
+    "toggle_dark": "Basculer en mode sombre",
+    "toggle_langs": "Changer de langue"
+  },
+  "common": {
+    "cancel": "Annuler",
+    "skipToMainContent": "Passer au contenu principal",
+    "submit": "Envoyer"
+  },
+  "footer": {
+    "copyright": "© Copyright {year}. All rights reserved.",
+    "form": {
+      "emailAddress": "Adresse email",
+      "joinNewsletter": "Inscription newsletter",
+      "joinOurNewsletter": "S'inscrire à la newsletter"
+    }
+  },
+  "intro": {
+    "aka": "Aussi connu sous le nom de",
+    "desc": "Exemple d'application Vite",
+    "dynamic-route": "Démo de route dynamique",
+    "hi": "Salut, {name}!",
+    "whats-your-name": "Comment t'appelles-tu ?"
+  },
+  "navMain": {
+    "about": "À propos",
+    "designSystem": "Design System",
+    "home": "Accueil",
+    "tasks": "Tâches"
+  },
+  "not-found": "Page non trouvée",
+  "pages": {
+    "about": {
+      "about": "À propos"
+    },
+    "homepage": {
+      "hero": {
+        "cta": "Get started!",
+        "title": "Je suis un Hero!"
+      },
+      "myAwesomeFeature": "Ma super feature"
+    },
+    "tasks": {
+      "addTask": "Ajouter une tâche",
+      "completed": "Terminée",
+      "delete": "Supprimer",
+      "deleteCompleted": "Effacer les tâches terminées",
+      "edit": "Modifier",
+      "filterByStatus": "Filtrer par status",
+      "filterByType": "Filtrer par type",
+      "filterNoResults": "Rien à afficher. Vérifiez les filtres 🤔.",
+      "form": {
+        "add": "Ajouter",
+        "title": "Titre",
+        "titlePlaceholder": "Titre de la tâche",
+        "type": "Type"
+      },
+      "noTasks": "Vous n'avez rien à faire 💪",
+      "taskList": "Liste des tâches",
+      "taskTitle": "Tâches",
+      "uncompletedTasks": "Toutes les tâches sont terminées 💪 ! | {count} tâche non terminée | {count} tâches non terminées"
+    }
+  },
+  "view-home": "View Accueil"
+}

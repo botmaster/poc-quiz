@@ -1,0 +1,16 @@
+
+// TODO: Choose between these two icons libraries. I prefer iconify/vue.
+// Icons - unplugin-icons
+.icon {
+  @apply inline-block align-middle;
+  width: 1em;
+  height: 1em;
+  // vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+// Icons - iconify/vue
+.iconify {
+  @apply inline-block;
+}

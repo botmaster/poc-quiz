@@ -1,0 +1,16 @@
+
+/* group */
+.avatar-group {
+    display: flex;
+    /* 👇 optional -> edit the size of all the avatars in the group */
+    /* font-size: 1.75em; */
+
+    & .avatar {
+      margin-left: -0.1em;
+    }
+
+    & .avatar__figure {
+      box-shadow: 0 0 0 4px var(--color-white-hex)!important;
+      //border: 8px solid #fff;
+    }
+  }

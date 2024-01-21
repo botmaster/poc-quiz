@@ -1,0 +1,29 @@
+
+
+html {
+    @apply antialiased text-base;
+}
+
+body {
+    @apply font-body bg-body-background text-body-text;
+}
+
+
+// Links
+a:not(.btn),
+button:not(.btn) {
+    @apply text-[inherit] underline font-medium
+    decoration-current decoration-from-font underline-offset-2 decoration-solid;
+
+    transition: color 0.4s;
+
+    &:hover {
+        @apply text-accent decoration-current;
+    }
+
+    &:focus {
+        @apply outline-1 outline-offset-2 outline-dotted outline-current;
+    }
+}
+
+

@@ -1,0 +1,221 @@
+@use "sass:selector";
+
+
+.btn {
+  $self: &;
+
+  @apply relative overflow-hidden shrink-0 inline-flex gap-x-[0.5em] justify-center items-center
+  px-[0.8em] py-[0.6em] rounded-md
+  text-sm text-current leading-none font-body font-medium whitespace-nowrap no-underline
+  cursor-pointer
+  border border-transparent;
+
+  transition: all 0.2s ease;
+  will-change: transform;
+
+  > svg {
+    @apply w-[1.2em] h-[1.2em] -m-0.5 -ml-[0.2em] flex-none;
+  }
+
+  > svg ~ span {
+    @apply truncate;
+  }
+
+  /**
+    * Modifiers
+    */
+
+  &, &--default {
+    @apply bg-gray-200 text-gray-700 border-gray-200 outline-0 shadow-md shadow-gray-100/80;
+
+    &:hover {
+      @apply bg-opacity-80 border-opacity-0;
+    }
+
+    &:focus-visible {
+      @apply  ring-gray-200 ring-2 ring-offset-2 border-opacity-0 bg-opacity-80;
+    }
+
+    &:active {
+      @apply translate-y-0.5 shadow-none;
+    }
+
+    &.btn--outlined {
+      @apply border-gray-200 text-gray-700;
+
+      &:hover {
+        @apply bg-gray-200 text-gray-700;
+      }
+
+      &:focus-visible {
+        //@apply border-transparent;
+      }
+    }
+  }
+
+  &--outlined {
+    @apply bg-transparent border;
+  }
+
+  &--primary {
+    @apply bg-primary text-primary-content border-primary shadow-primary/10;
+
+    &:hover {
+      //@apply bg-primary border-primary;
+    }
+
+    &:focus-visible {
+      @apply ring-primary;
+    }
+
+    &.btn--outlined {
+      @apply bg-transparent border border-primary text-primary;
+
+      &:hover {
+        @apply bg-primary text-primary-content;
+      }
+
+      &:focus-visible {
+        //@apply border-transparent;
+      }
+    }
+  }
+
+  &--secondary {
+    @apply bg-secondary text-secondary-content border-secondary shadow-secondary/10;
+
+    &:hover {
+      //@apply bg-secondary/70;
+    }
+
+    &:focus-visible {
+      @apply ring-secondary;
+    }
+
+    &.btn--outlined {
+      @apply bg-transparent border border-secondary text-secondary;
+
+      &:hover {
+        @apply bg-secondary text-secondary-content;
+      }
+
+      &:focus-visible {
+        //@apply border-transparent;
+      }
+    }
+  }
+
+  &--accent {
+    @apply bg-accent text-accent-content border-accent shadow-accent/10;
+
+    &:hover {
+      //@apply bg-accent/70;
+    }
+
+    &:focus-visible {
+      @apply ring-accent;
+    }
+
+    &.btn--outlined {
+      @apply bg-transparent border border-accent text-accent;
+
+      &:hover {
+        @apply bg-accent text-accent-content;
+      }
+
+      &:focus-visible {
+        //@apply border-transparent;
+      }
+    }
+  }
+
+  &--neutral {
+    @apply bg-neutral text-neutral-content border-neutral shadow-neutral/10;
+
+    &:hover {
+      //@apply bg-neutral/70 text-neutral-content;
+    }
+
+    &:focus-visible {
+      @apply ring-neutral;
+    }
+
+    &.btn--outlined {
+      @apply bg-transparent border border-neutral text-neutral;
+
+      &:hover {
+        @apply bg-neutral text-neutral-content;
+      }
+
+      &:focus-visible {
+        //@apply border-transparent;
+      }
+    }
+  }
+
+  &--ghost {
+    @apply bg-transparent border-transparent shadow-none;
+
+    &:hover {
+      @apply bg-gray-400/10 border-transparent;
+    }
+
+    &:focus-visible {
+      @apply ring-gray-500;
+    }
+
+    &:active {
+      @apply shadow-none;
+    }
+
+    &.btn--outlined {
+      @apply hidden;
+    }
+  }
+
+  &--link {
+    @apply bg-transparent border-transparent shadow-none text-primary underline;
+
+    &:hover {
+      @apply bg-transparent border-transparent text-primary;
+    }
+
+    &:focus-visible {
+      @apply ring-primary;
+    }
+
+    &.btn--outlined {
+      @apply hidden;
+    }
+  }
+
+  &--disabled,
+  &[disabled],
+  &[readonly] {
+    @apply cursor-not-allowed opacity-30 shadow-none;
+
+    &:active {
+      @apply shadow-none translate-y-0;
+    }
+  }
+
+  &--icon {
+    @apply rounded-full min-w-0 aspect-square border-transparent shadow-none;
+  }
+
+  &--sm {
+    @apply text-xs leading-none px-[0.7em] py-[0.4em];
+  }
+
+  &--md {
+    @apply  leading-none;
+  }
+
+  &--lg {
+    @apply text-base leading-none px-[1em] py-[0.75em];
+  }
+
+  &--loading {
+    @apply cursor-not-allowed;
+  }
+}

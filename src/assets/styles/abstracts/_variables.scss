@@ -1,0 +1,117 @@
+@use '../abstracts/functions' as *;
+@use 'sass:color';
+
+/**
+  Colors
+ */
+
+// Named colors
+$nord-0: #2e3440;
+$nord-1: #3b4252;
+$nord-2: #434c5e;
+$nord-3: #4c566a;
+$nord-4: #d8dee9;
+$nord-5: #e5e9f0;
+$nord-6: #eceff4;
+$nord-7: #8fbcbb;
+$nord-8: #88c0d0;
+$nord-9: #81a1c1;
+$nord-10: #5e81ac;
+$nord-11: #bf616a;
+$nord-12: #d08770;
+$nord-13: #ebcb8b;
+$nord-14: #a3be8c;
+$nord-15: #b48ead;
+
+
+$color-red: #bf616a;
+$color-green: #a3be8c;
+$color-blue: #5e81ac;
+$color-yellow: #ebcb8b;
+$color-pink: #b48ead;
+
+$color-white: #fff;
+$color-black: #000;
+
+// gray colors
+$color-gray-50: #f9fafb;
+$color-gray-100: #f3f4f6;
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
+$color-gray-400: #9ca3af;
+$color-gray-500: #6b7280;
+$color-gray-600: #4b5563;
+$color-gray-700: #374151;
+$color-gray-800: #1f2937;
+$color-gray-900: #111827;
+$color-gray-950: #030712;
+// Colors map
+$colors: (
+        "red": $color-red,
+        "green": $color-green,
+        "blue": $color-blue,
+        "yellow": $color-yellow,
+        "pink": $color-pink,
+        "white": $color-white,
+        "black": $color-black,
+        "gray-50": $color-gray-50,
+        "gray-100": $color-gray-100,
+        "gray-200": $color-gray-200,
+        "gray-300": $color-gray-300,
+        "gray-400": $color-gray-400,
+        "gray-500": $color-gray-500,
+        "gray-600": $color-gray-600,
+        "gray-700": $color-gray-700,
+        "gray-800": $color-gray-800,
+        "gray-900": $color-gray-900,
+        "gray-950": $color-gray-950,
+);
+
+
+// Theme colors
+$color-primary: $color-blue;
+$color-secondary: $nord-8;
+$color-accent: $color-pink;
+$color-neutral: $color-gray-600;
+
+$darken-amount: -60%;
+$lighten-amount: 90%;
+
+// Theme colors map
+$theme-colors: (
+        "primary": $color-primary,
+        "primary-content": color.scale($color-primary, $lightness: $lighten-amount),
+        "secondary": $color-secondary,
+        "secondary-content": color.scale($color-secondary, $lightness: $lighten-amount),
+        "accent": $color-accent,
+        "accent-content": color.scale($color-accent, $lightness: $lighten-amount),
+        "neutral": $color-neutral,
+        "neutral-content": color.scale($color-neutral, $lightness: $lighten-amount),
+);
+
+// Feedback colors
+$color-success: $color-green;
+$color-info: $color-blue;
+$color-warning: $color-yellow;
+$color-danger: $color-red;
+
+// Feedback colors map
+$feedback-colors: (
+        "success": $color-success,
+        "success-content": color.scale($color-success, $lightness: $darken-amount),
+        "info": $color-info,
+        "info-content": color.scale($color-info, $lightness: $lighten-amount),
+        "warning": $color-warning,
+        "warning-content": color.scale($color-warning, $lightness: $darken-amount),
+        "danger": $color-danger,
+        "danger-content": color.scale($color-danger, $lightness: $lighten-amount),
+);
+
+
+/**
+  Fonts
+ */
+
+// Font families
+$font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+$font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace

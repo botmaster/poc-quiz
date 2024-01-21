@@ -1,0 +1,17 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": [
+      "unplugin-icons/types/vue", // for unplugin-icons. But it's not working. I have to add types manually in d.ts file.
+      "@intlify/unplugin-vue-i18n/messages"
+    ],
+    "noEmit": true
+  },
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["src/**/__tests__/*"]
+}

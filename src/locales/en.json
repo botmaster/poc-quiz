@@ -1,0 +1,70 @@
+{
+  "button": {
+    "about": "About",
+    "back": "Back",
+    "go": "GO",
+    "home": "Home",
+    "toggle_dark": "Toggle dark mode",
+    "toggle_langs": "Change languages"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "skipToMainContent": "Skip to main content",
+    "submit": "Submit"
+  },
+  "footer": {
+    "copyright": "© Copyright {year}. All rights reserved.",
+    "form": {
+      "emailAddress": "Email address",
+      "joinNewsletter": "Join newsletter",
+      "joinOurNewsletter": "Join our newsletter"
+    }
+  },
+  "intro": {
+    "aka": "Also known as",
+    "desc": "Opinionated Vite Starter Template",
+    "dynamic-route": "Demo of dynamic route",
+    "hi": "Hi, {name}!",
+    "whats-your-name": "What's your name?"
+  },
+  "navMain": {
+    "about": "About us",
+    "designSystem": "Design System",
+    "home": "Homepage",
+    "tasks": "Tasks"
+  },
+  "not-found": "Not found",
+  "pages": {
+    "about": {
+      "about": "About"
+    },
+    "homepage": {
+      "hero": {
+        "cta": "Get started!",
+        "title": "I'm a Hero!"
+      },
+      "myAwesomeFeature": "My awesome feature."
+    },
+    "tasks": {
+      "addTask": "Add task",
+      "completed": "Completed",
+      "delete": "Delete",
+      "deleteCompleted": "Clear completed tasks",
+      "edit": "Edit",
+      "filterByStatus": "Filter by status",
+      "filterByType": "Filter by type",
+      "filterNoResults": "Nothing to display. Check filters 🤔.",
+      "form": {
+        "add": "Add",
+        "title": "Title",
+        "titlePlaceholder": "Enter a title",
+        "type": "Type"
+      },
+      "noTasks": "You don't have to do anything 💪",
+      "taskList": "Task list",
+      "taskTitle": "Tasks",
+      "uncompletedTasks": "All tasks completed 🎉! | {count} task remaining | {count} tasks remaining"
+    }
+  },
+  "view-home": "View Home"
+}

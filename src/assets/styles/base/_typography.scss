@@ -1,0 +1,85 @@
+@use '../abstracts/functions' as *;
+
+
+// General
+// -------------------------
+
+
+// Headings
+// -------------------------
+
+
+@for $i from 1 through 6 {
+  .heading-#{$i} {
+    @apply font-display font-bold;
+  }
+}
+
+:root {
+  --heading-clamp: 4vw + 1rem;
+}
+
+.heading-1 {
+  @apply text-4xl lg:text-6xl;
+  //font-size: clamp(theme('fontSize.4xl'), var(--heading-clamp), theme('fontSize.6xl'));
+  // font-size: #{fluid(36px, 60px, 640px, 1536px)};
+}
+
+.heading-2 {
+  @apply text-3xl lg:text-5xl;
+  //font-size: clamp(theme('fontSize.3xl'), var(--heading-clamp), theme('fontSize.5xl'));
+  // font-size: #{fluid(30px, 48px, 640px, 1536px)};
+}
+
+.heading-3 {
+  @apply text-2xl lg:text-4xl;
+  //font-size: clamp(theme('fontSize.2xl'), var(--heading-clamp), theme('fontSize.4xl'));
+  // font-size: #{fluid(24px, 36px, 640px, 1536px)};
+}
+
+.heading-4 {
+  @apply text-xl lg:text-3xl;
+  //font-size: clamp(theme('fontSize.xl'), var(--heading-clamp), theme('fontSize.3xl'));
+  // font-size: #{fluid(20px, 30px, 640px, 1536px)};
+}
+
+.heading-5 {
+  @apply text-lg lg:text-2xl;
+  //font-size: clamp(theme('fontSize.lg'), var(--heading-clamp), theme('fontSize.2xl'));
+  // font-size: #{fluid(18px, 24px, 640px, 1536px)};
+}
+
+.heading-6 {
+  @apply text-base lg:text-xl;
+  //font-size: clamp(theme('fontSize.base'), var(--heading-clamp), theme('fontSize.xl'));
+  // font-size: #{fluid(16px, 20px, 640px, 1536px)};
+}
+
+// Paragraphs
+// -------------------------
+
+p {
+  @apply tracking-tight;
+  // font-size: #{fluid(16px, 18px, 640px, 1536px)};
+}
+
+.paragraph-lg {
+  @apply font-body text-lg lg:text-xl tracking-tight;
+  // font-size: #{fluid(18px, 24px, 640px, 1536px)};
+}
+.paragraph-md {
+  @apply font-body text-base lg:text-lg tracking-tight;
+  // font-size: #{fluid(16px, 18px, 640px, 1536px)};
+}
+.paragraph-sm {
+  @apply font-body text-sm lg:text-base tracking-tight;
+  // font-size: #{fluid(14px, 16px, 640px, 1536px)};
+}
+
+// Flow
+// -------------------------
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: 1em;
+}
+
