@@ -1,7 +1,7 @@
 {
   "name": "vite-vue-typescript-starter",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "A Vite + Vue 3 + TypeScript starter project with pinia, vue-i18n, tailwindcss, eslint, prettier, and more.",
   "author": "Pascal Achard",
