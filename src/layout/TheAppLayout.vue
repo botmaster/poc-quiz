@@ -20,6 +20,9 @@ useHead({
         <RouterLink :to="{ name: 'tasks' }">
           {{ t('navMain.tasks') }}
         </RouterLink>
+        <RouterLink :to="{ name: 'quiz' }">
+          {{ t('navMain.quiz') }}
+        </RouterLink>
       </template>
       <template #header-menu-panel="{ close }">
         <RouterLink :to="{ name: 'about' }" @click="close">
@@ -27,6 +30,9 @@ useHead({
         </RouterLink>
         <RouterLink :to="{ name: 'tasks' }" @click="close">
           {{ t('navMain.tasks') }}
+        </RouterLink>
+        <RouterLink :to="{ name: 'quiz' }">
+          {{ t('navMain.quiz') }}
         </RouterLink>
       </template>
     </TheHeader>

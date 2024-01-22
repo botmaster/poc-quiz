@@ -13,6 +13,14 @@ const routes = [
     },
   },
   {
+    path: '/quiz',
+    name: 'quiz',
+    component: () => import('@/views/ViewQuiz.vue'),
+    meta: {
+      layout: layouts.TheAppLayout,
+    },
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('@/views/ViewAbout.vue'),

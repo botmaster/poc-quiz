@@ -78,7 +78,7 @@ const classes = computed(() => {
 </script>
 
 <template>
-  <Component :is="tag" class="btn" :class="classes">
+  <Component :is="tag" class="btn" :class="classes" :disabled="disabled">
     <template v-if="loading">
       <span class="flex gap-1.5 opacity-0">
         <slot />
