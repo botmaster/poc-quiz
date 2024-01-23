@@ -1,6 +1,7 @@
 export interface Quiz {
   version: number
   items: Question[]
+  name: string
 }
 
 export interface Question {
@@ -8,12 +9,14 @@ export interface Question {
   body: string
   answers: Answer[]
   rightAnswerId: number
+  duration?: number
 }
 
 export interface QuestionWithUserAnswer extends Question {
   userAnswer: Answer
   answerIsRight: boolean
   rightAnswer: Answer
+  timeSpent?: number
 }
 
 export interface Answer {
