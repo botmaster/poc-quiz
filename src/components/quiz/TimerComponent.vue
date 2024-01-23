@@ -1,47 +1,61 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, provide, ref } from 'vue';
 
 const props = withDefaults(defineProps<{
   duration: number
 }>(), {
-  duration: 6,
+  duration: 15,
 });
 
 const emit = defineEmits<{
-  (e: 'countFinished'): void
-  (e: 'timeoutNotification'): void
+  (e: 'questionIsOver'): void
+  (e: 'questionTimeout'): void
 }>();
 
 const timerInterval = ref<ReturnType<typeof setTimeout> | null>(null);
-const questionDurationProgress = ref(0);
-const currentSecound = ref(0);
+const currentSecound = ref(props.duration);
+const preciseTime = ref(0);
 const timeOut = ref(false);
 
+let startTime: number;
+
 function startTimer() {
-  timerInterval.value = setInterval(() => {
-    currentSecound.value += 1;
-    questionDurationProgress.value = (currentSecound.value / (props.duration - 1)) * 100;
-    if (currentSecound.value === props.duration) {
-      clearInterval(Number(timerInterval.value));
-      timeOut.value = true;
-      emit('timeoutNotification');
-      finishing();
-    }
-  }, 1000);
+  startTime = performance.now();
+  timerInterval.value = setTimeout(checkTime, 1000);
+}
+
+function checkTime() {
+  const elapsed = performance.now() - startTime;
+  const seconds = Math.floor(elapsed / 1000);
+  preciseTime.value = elapsed;
+
+  if (seconds >= props.duration) {
+    timeOut.value = true;
+    emit('questionTimeout');
+    finishing();
+  }
+  else {
+    currentSecound.value = props.duration - seconds;
+    timerInterval.value = setTimeout(checkTime, 1000);
+  }
 }
 
 function finishing() {
   setTimeout(() => {
-    emit('countFinished');
+    emit('questionIsOver');
   }, 2000);
 }
+
+provide('currentSecound', currentSecound);
+provide('preciseTime', preciseTime);
 
 onMounted(() => {
   startTimer();
 });
 
 onUnmounted(() => {
-  clearInterval(Number(timerInterval.value));
+  if (timerInterval.value)
+    clearInterval(Number(timerInterval.value));
 });
 </script>
 
@@ -53,7 +67,6 @@ onUnmounted(() => {
     <p v-if="timeOut">
       time out !!!
     </p>
-    <p>progress: {{ questionDurationProgress }}</p>
   </div>
 </template>
 
