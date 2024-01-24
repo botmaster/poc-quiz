@@ -15,7 +15,7 @@ const emit = defineEmits<{
 
 const timeOut = ref(false);
 
-const { duration, left, pause, play } = useCountdownTimer({
+const { left, play, leftLikeObject } = useCountdownTimer({
   duration: props.duration * 1000,
 });
 
@@ -44,14 +44,9 @@ onMounted(() => {
 
 <template>
   <div class="">
-    <p>
-      duration: {{ duration }}
-    </p>
-    <p>
-      left: {{ left / 1000 }}
-    </p>
-    <p v-if="timeOut">
-      time out !!!
+    <p class="font-mono text-3xl">
+      <span>{{ leftLikeObject.seconds }}<span class="text-sm">s</span> {{
+        leftLikeObject.milliseconds?.toFixed(0).padStart(3, '0') }}</span><span class="text-xs">ms</span> <span v-if="timeOut">time out !!!</span>
     </p>
   </div>
 </template>
