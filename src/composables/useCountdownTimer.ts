@@ -64,7 +64,7 @@ export default function useCountdownTimer(options: CountdownTimerOptions) {
   return {
     duration,
     left,
-    iRunning,
+    isRunning,
     play,
     pause,
     reset,
