@@ -66,11 +66,26 @@ export const useQuizStore = defineStore('quiz', () => {
     }];
   };
 
-  const paginate = () => {
+  /* const paginate = () => {
     if (currentQuestionIndex.value === quiz.value.items.length)
       return quizFinished.value = true;
     currentQuestionId.value = quiz.value.items[currentQuestionIndex.value].id;
     currentQuestionIndex.value += 1;
+  }; */
+
+  // Start the Quiz. If it was already started, do nothing.
+  const start = () => {
+    if (currentQuestionId.value)
+      return;
+    currentQuestionId.value = quiz.value.items[currentQuestionIndex.value].id;
+  };
+
+  // Go to the next question. If it was already the last question, finish the Quiz.
+  const goToNextQuestion = () => {
+    if (currentQuestionIndex.value === quiz.value.items.length - 1)
+      return quizFinished.value = true;
+    currentQuestionIndex.value += 1;
+    currentQuestionId.value = quiz.value.items[currentQuestionIndex.value].id;
   };
 
   const reset = () => {
@@ -84,7 +99,7 @@ export const useQuizStore = defineStore('quiz', () => {
   const restartQuiz = () => {
     reset();
     version.value += 1;
-    paginate();
+    start();
   };
 
   return {
@@ -92,14 +107,16 @@ export const useQuizStore = defineStore('quiz', () => {
     quizFinished,
     quiz,
     currentQuestionId,
+    currentQuestionIndex,
     currentQuestion,
     averageTimeSpentByQuestion,
-    paginate,
+    answerList,
+    score,
+    start,
+    goToNextQuestion,
     restartQuiz,
     addUserAnswer,
     reset,
-    answerList,
-    score,
   };
 });
 

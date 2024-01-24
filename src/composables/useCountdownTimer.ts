@@ -2,7 +2,8 @@
  * Timer composable
  */
 
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
+import { Duration } from 'luxon';
 
 interface CountdownTimerOptions {
   duration: number // in milliseconds
@@ -53,6 +54,20 @@ export default function useCountdownTimer(options: CountdownTimerOptions) {
       cancelAnimationFrame(handle);
   };
 
+  /* const time = computed(() => ({
+    millisecond: (left.value % 1000).toFixed(0).padStart(3, '0'),
+    seconds: Math.floor(left.value / 1000) % 60,
+    minutes: Math.floor(left.value / 1000 / 60) % 60,
+    hours: Math.floor(left.value / 1000 / 60 / 60) % 24,
+    days: Math.floor(left.value / 1000 / 60 / 60 / 24),
+  }));
+ */
+
+  const leftLikeObject = computed(() => {
+    const duration = Duration.fromMillis(left.value);
+    return duration.shiftTo('days', 'hours', 'minutes', 'seconds', 'milliseconds').toObject();
+  });
+
   onMounted(() => {
     reset();
   });
@@ -62,6 +77,7 @@ export default function useCountdownTimer(options: CountdownTimerOptions) {
   });
 
   return {
+    leftLikeObject,
     duration,
     left,
     isRunning,

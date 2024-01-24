@@ -2,7 +2,8 @@
  * Timer composable
  */
 
-import { onMounted, onUnmounted, ref } from 'vue';
+import { Duration } from 'luxon';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 interface TimerOptions {
   duration: number | undefined // in milliseconds
@@ -23,8 +24,6 @@ export default function useTimer(options: TimerOptions) {
     else
       handle = requestAnimationFrame(update);
   };
-
-  // Methods
 
   // Reset the timer. Stop it and set the elapsed time to 0.
   const reset = () => {
@@ -63,7 +62,13 @@ export default function useTimer(options: TimerOptions) {
     reset();
   });
 
+  const elapsedLikeObject = computed(() => {
+    const duration = Duration.fromMillis(elapsed.value);
+    return duration.shiftTo('days', 'hours', 'minutes', 'seconds', 'milliseconds').toObject();
+  });
+
   return {
+    elapsedLikeObject,
     elapsed,
     isRunning,
     reset,
