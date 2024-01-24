@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { Icon } from '@iconify/vue/dist/iconify.js';
 import useCountdownTimer from '@/composables/useCountdownTimer';
 
 const props = withDefaults(defineProps<{
   duration: number
+  autoPlay?: boolean
 }>(), {
   duration: 15,
+  autoPlay: false,
 });
 
 const emit = defineEmits<{
@@ -34,11 +37,16 @@ watch(left, (value) => {
 function finishing() {
   setTimeout(() => {
     emit('questionIsOver');
-  }, 2000);
+  }, 3000);
 }
 
 onMounted(() => {
-  startTimer();
+  if (props.autoPlay)
+    startTimer();
+});
+
+defineExpose({
+  startTimer,
 });
 </script>
 
@@ -46,7 +54,10 @@ onMounted(() => {
   <div class="">
     <p class="font-mono text-3xl">
       <span>{{ leftLikeObject.seconds }}<span class="text-sm">s</span> {{
-        leftLikeObject.milliseconds?.toFixed(0).padStart(3, '0') }}</span><span class="text-xs">ms</span> <span v-if="timeOut">time out !!!</span>
+        leftLikeObject.milliseconds?.toFixed(0).padStart(3, '0') }}</span><span class="text-xs">ms</span>
+    </p>
+    <p class="text-3xl">
+      <span v-if="timeOut">Time out! </span>
     </p>
   </div>
 </template>

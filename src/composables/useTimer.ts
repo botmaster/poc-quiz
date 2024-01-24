@@ -25,8 +25,6 @@ export default function useTimer(options: TimerOptions) {
       handle = requestAnimationFrame(update);
   };
 
-  // Methods
-
   // Reset the timer. Stop it and set the elapsed time to 0.
   const reset = () => {
     if (handle)

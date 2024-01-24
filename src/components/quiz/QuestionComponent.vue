@@ -16,9 +16,13 @@ const emit = defineEmits<{
   'answerPicked': [question: Question, answerId: number, timeSpent: number]
   'noAnswerPicked': [question: Question]
 }>();
-const isTimeout = ref(false);
 
+const startDelay = 500;
+
+const isStarted = ref(false);
+const isTimeout = ref(false);
 const selectedAnswerId = ref<number | null>(null);
+const timerRef = ref<typeof TimerComponent>();
 
 // Duration in seconds
 const duration = computed<number | undefined>(() => {
@@ -41,6 +45,7 @@ function answerPicked(answerId: number, timeSpent: number) {
 
 function questionTimeoutHandler() {
   isTimeout.value = true;
+  isStarted.value = false;
 }
 
 function questionIsOverHandler() {
@@ -48,11 +53,13 @@ function questionIsOverHandler() {
 }
 
 function cancelHandler() {
+  isStarted.value = false;
   reset();
   noAnswerPicked();
 }
 
 function submitHandler() {
+  isStarted.value = false;
   pause();
   if (selectedAnswerId.value)
     answerPicked(selectedAnswerId.value, elapsed.value);
@@ -61,21 +68,25 @@ function submitHandler() {
 }
 
 onMounted(() => {
-  play();
+  setTimeout(() => {
+    isStarted.value = true;
+    play();
+    timerRef.value?.startTimer();
+  }, startDelay);
 });
 </script>
 
 <template>
   <div>
-    <TimerComponent v-if="timeout || typeof timeout === 'number'" :duration="duration" @question-timeout="questionTimeoutHandler" @question-is-over="questionIsOverHandler" />
-    <div v-if="!isTimeout" class="">
-      <h2 class="text-4xl">
+    <TimerComponent v-if="timeout || typeof timeout === 'number'" ref="timerRef" :duration="duration" @question-timeout="questionTimeoutHandler" @question-is-over="questionIsOverHandler" />
+    <div class="">
+      <p class="text-4xl">
         {{ props.question.body }}
-      </h2>
+      </p>
       <form action="" @submit.prevent="submitHandler">
         <ul class="mt-8">
           <li v-for="answer of props.question.answers" :key="answer.id" class="flex gap-2 items-center">
-            <input :id="`radio_${answer.id}`" v-model.number="selectedAnswerId" name="answers" type="radio" :value="answer.id">
+            <input :id="`radio_${answer.id}`" v-model.number="selectedAnswerId" :disabled="isTimeout || !isStarted" name="answers" type="radio" :value="answer.id">
             <label :for="`radio_${answer.id}`">{{ answer.body }}</label>
           </li>
         </ul>
@@ -83,7 +94,7 @@ onMounted(() => {
           <AppButton type="submit" :disabled="!selectedAnswerId" color-variant="primary" size="lg">
             answer
           </AppButton>
-          <AppButton type="submit" color-variant="ghost" size="lg" @click.prevent="cancelHandler">
+          <AppButton :disabled="isTimeout || !isStarted" type="submit" color-variant="ghost" size="lg" @click.prevent="cancelHandler">
             skip
           </AppButton>
         </div>
