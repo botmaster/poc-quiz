@@ -9,13 +9,10 @@ import AppButton from '@/components/shared/AppButton.vue';
 import type { Question } from '@/types/quiz';
 import useStopWatch from '@/composables/useStopWatch';
 
-const { elapsed, play } = useStopWatch({ duration: 10000 });
-
 const quizStore = useQuizStore();
 
 onMounted(() => {
   quizStore.paginate();
-  play();
 });
 
 function questionEventHandler(question: Question, answerId?: number, timeSpent?: number) {
@@ -43,7 +40,6 @@ onUnmounted(() => {
         totam. Assumenda commodi, corporis doloremque ipsam optio provident quidem. Ad doloremque minima molestiae rem
         sit?
       </p>
-      <p>{{ elapsed }}</p>
       <div v-if="quizStore.quizFinished" class="mt-4">
         <p class="heading-3">
           <span>Finished</span>
@@ -98,3 +94,4 @@ onUnmounted(() => {
 <style scoped lang="scss">
 
 </style>
+@/composables/useTimer

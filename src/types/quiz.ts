@@ -9,7 +9,7 @@ export interface Question {
   body: string
   answers: Answer[]
   rightAnswerId: number
-  duration?: number
+  duration?: number // in seconds
 }
 
 export interface QuestionWithUserAnswer extends Question {

@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from 'vue';
 import AppButton from '@/components/shared/AppButton.vue';
 import TimerComponent from '@/components/quiz/TimerComponent.vue';
 import type { Question } from '@/types/quiz';
-import useStopWatch from '@/composables/useStopWatch';
+import useTimer from '@/composables/useTimer';
 
 interface Props {
   question: Question
@@ -20,9 +20,7 @@ const isTimeout = ref(false);
 
 const selectedAnswerId = ref<number | null>(null);
 
-const { elapsed, play, pause, reset } = useStopWatch({ duration: 10000 });
-
-// Computed - duration
+// Duration in seconds
 const duration = computed<number | undefined>(() => {
   if (typeof props.timeout === 'number')
     return props.timeout;
@@ -30,6 +28,8 @@ const duration = computed<number | undefined>(() => {
     return props.question.duration;
   return undefined;
 });
+
+const { elapsed, play, pause, reset } = useTimer({ duration: duration.value ? duration.value * 1000 : undefined });
 
 function noAnswerPicked() {
   emit('noAnswerPicked', props.question);
@@ -67,7 +67,6 @@ onMounted(() => {
 
 <template>
   <div>
-    <p>{{ elapsed }}</p>
     <TimerComponent v-if="timeout || typeof timeout === 'number'" :duration="duration" @question-timeout="questionTimeoutHandler" @question-is-over="questionIsOverHandler" />
     <div v-if="!isTimeout" class="">
       <h2 class="text-4xl">

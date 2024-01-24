@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, provide, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
+import useCountdownTimer from '@/composables/useCountdownTimer';
 
 const props = withDefaults(defineProps<{
   duration: number
@@ -12,33 +13,23 @@ const emit = defineEmits<{
   (e: 'questionTimeout'): void
 }>();
 
-const timerInterval = ref<ReturnType<typeof setTimeout> | null>(null);
-const currentSecound = ref(props.duration);
-const preciseTime = ref(0);
 const timeOut = ref(false);
 
-let startTime: number;
+const { duration, left, pause, play } = useCountdownTimer({
+  duration: props.duration * 1000,
+});
 
 function startTimer() {
-  startTime = performance.now();
-  timerInterval.value = setTimeout(checkTime, 1000);
+  play();
 }
 
-function checkTime() {
-  const elapsed = performance.now() - startTime;
-  const seconds = Math.floor(elapsed / 1000);
-  preciseTime.value = elapsed;
-
-  if (seconds >= props.duration) {
+watch(left, (value) => {
+  if (value <= 0) {
     timeOut.value = true;
     emit('questionTimeout');
     finishing();
   }
-  else {
-    currentSecound.value = props.duration - seconds;
-    timerInterval.value = setTimeout(checkTime, 1000);
-  }
-}
+});
 
 function finishing() {
   setTimeout(() => {
@@ -46,23 +37,18 @@ function finishing() {
   }, 2000);
 }
 
-provide('currentSecound', currentSecound);
-provide('preciseTime', preciseTime);
-
 onMounted(() => {
   startTimer();
-});
-
-onUnmounted(() => {
-  if (timerInterval.value)
-    clearInterval(Number(timerInterval.value));
 });
 </script>
 
 <template>
   <div class="">
-    <p class="text-3xl font-display">
-      {{ currentSecound }}
+    <p>
+      duration: {{ duration }}
+    </p>
+    <p>
+      left: {{ left / 1000 }}
     </p>
     <p v-if="timeOut">
       time out !!!
