@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import type { Answer, Question, QuestionWithUserAnswer, Quiz } from '@/types/quiz';
 import data from '@/assets/data/quiz.json';
 
-const questionsCount = 5;
+const questionsCount = data.questionCount || 10;
 const questions = data.questions as Question[];
 
 export const useQuizStore = defineStore('quiz', () => {
@@ -65,13 +65,6 @@ export const useQuizStore = defineStore('quiz', () => {
       timeSpent,
     }];
   };
-
-  /* const paginate = () => {
-    if (currentQuestionIndex.value === quiz.value.items.length)
-      return quizFinished.value = true;
-    currentQuestionId.value = quiz.value.items[currentQuestionIndex.value].id;
-    currentQuestionIndex.value += 1;
-  }; */
 
   // Start the Quiz. If it was already started, do nothing.
   const start = () => {

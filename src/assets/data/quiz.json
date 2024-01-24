@@ -1,6 +1,7 @@
 {
   "version": 3,
   "name": "My Super Quiz",
+  "questionCount": 8,
   "questions": [
     {
       "id": 1,

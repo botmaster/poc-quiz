@@ -78,19 +78,19 @@ onMounted(() => {
 
 <template>
   <div>
-    <TimerComponent v-if="timeout || typeof timeout === 'number'" ref="timerRef" :duration="duration" @question-timeout="questionTimeoutHandler" @question-is-over="questionIsOverHandler" />
+    <TimerComponent class="mb-4" v-if="timeout || typeof timeout === 'number'" ref="timerRef" :duration="duration" @question-timeout="questionTimeoutHandler" @question-is-over="questionIsOverHandler" />
     <div class="">
-      <p class="text-4xl">
+      <p class="text-6xl">
         {{ props.question.body }}
       </p>
       <form action="" @submit.prevent="submitHandler">
-        <ul class="mt-8">
+        <ul class="mt-6 space-y-2">
           <li v-for="answer of props.question.answers" :key="answer.id" class="flex gap-2 items-center">
             <input :id="`radio_${answer.id}`" v-model.number="selectedAnswerId" :disabled="isTimeout || !isStarted" name="answers" type="radio" :value="answer.id">
             <label :for="`radio_${answer.id}`">{{ answer.body }}</label>
           </li>
         </ul>
-        <div class="mt-4 flex gap-2">
+        <div class="mt-8 flex gap-2">
           <AppButton type="submit" :disabled="!selectedAnswerId" color-variant="primary" size="lg">
             answer
           </AppButton>

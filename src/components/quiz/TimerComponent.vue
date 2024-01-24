@@ -51,9 +51,9 @@ defineExpose({
 </script>
 
 <template>
-  <div class="">
+  <div class="flex gap-3">
     <p class="font-mono text-3xl">
-      <span>{{ leftLikeObject.seconds }}<span class="text-sm">s</span> {{
+      <span>{{ leftLikeObject.seconds?.toFixed(0).padStart(2,'0') }}<span class="text-sm">s</span> {{
         leftLikeObject.milliseconds?.toFixed(0).padStart(3, '0') }}</span><span class="text-xs">ms</span>
     </p>
     <p class="text-3xl">

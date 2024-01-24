@@ -10,11 +10,6 @@ import type { Question } from '@/types/quiz';
 
 const quizStore = useQuizStore();
 
-// Quiz screens
-// 1. Welcome screen
-// 2. Question screen
-// 3. Result screen
-
 const currentScreen = ref<'welcome' | 'questions' | 'results'>('welcome');
 
 function questionEventHandler(question: Question, answerId?: number, timeSpent?: number) {
@@ -66,7 +61,7 @@ watch(() => quizStore.quizFinished, (newValue) => {
           </p>
         </div>
         <div v-else-if="currentScreen === 'questions'">
-          <h3 class="heading-3">
+          <h3 class="heading-3 mb-8">
             Question {{ quizStore.currentQuestionIndex + 1 }}<span class="heading-6">/{{ quizStore.quiz.items.length
             }}</span>
           </h3>
