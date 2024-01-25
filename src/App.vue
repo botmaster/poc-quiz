@@ -3,7 +3,7 @@ import { useHead } from '@unhead/vue';
 import TheSkipLink from '@/components/shared/TheSkipLink.vue';
 
 useHead({
-  titleTemplate: (title?: string) => (!title ? 'Site name' : `${title} - Site name 🤘`),
+  titleTemplate: (title?: string) => (!title ? 'Site name' : `${title} - POC - Quiz 🤘`),
   title: 'Description of the site (via layout)',
   meta: [
     {
@@ -18,12 +18,6 @@ useHead({
       href: 'https://vuejs.org/logo.svg',
     },
   ],
-  bodyAttrs: {
-    onresize: () => {
-      // eslint-disable-next-line no-console
-      console.log('resized');
-    },
-  },
 });
 </script>
 

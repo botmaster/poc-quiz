@@ -74,22 +74,22 @@ import AppButton from '@/components/shared/AppButton.vue';
                   </slot>
                 </div>
                 <div class="popover__panel-actions">
-                  <RouterLink class="btn btn--neutral btn--outlined" :to="{ name: 'about' }">
+                  <!--  <RouterLink class="btn btn--neutral btn--outlined" :to="{ name: 'about' }">
                     Log in
                   </RouterLink>
                   <AppButton color-variant="neutral">
                     Download the app
-                  </AppButton>
+                  </AppButton> -->
                 </div>
               </PopoverPanel>
             </transition>
           </Popover>
-          <AppButton color-variant="ghost" class="hidden lg:block">
+          <!-- <AppButton color-variant="ghost" class="hidden lg:block">
             Log in
           </AppButton>
           <AppButton color-variant="neutral" class="hidden lg:inline-flex">
             <Icon icon="mdi:download" /><span>Download</span>
-          </AppButton>
+          </AppButton> -->
         </div>
       </div>
     </nav>
