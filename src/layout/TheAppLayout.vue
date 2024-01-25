@@ -6,7 +6,7 @@ import TheHeader from '@/components/layout/TheHeader.vue';
 
 const { t } = useI18n();
 useHead({
-  title: 'My awesome site',
+  title: 'This is a drill!',
 });
 </script>
 
@@ -14,25 +14,19 @@ useHead({
   <div class="flex flex-col h-screen">
     <TheHeader>
       <template #header-menu-main>
+        <RouterLink :to="{ name: 'quiz' }">
+          {{ t('navMain.quiz') }}
+        </RouterLink>
         <RouterLink :to="{ name: 'about' }">
           {{ t('navMain.about') }}
         </RouterLink>
-        <RouterLink :to="{ name: 'tasks' }">
-          {{ t('navMain.tasks') }}
-        </RouterLink>
-        <RouterLink :to="{ name: 'quiz' }">
-          {{ t('navMain.quiz') }}
-        </RouterLink>
       </template>
       <template #header-menu-panel="{ close }">
-        <RouterLink :to="{ name: 'about' }" @click="close">
-          {{ t('navMain.about') }}
-        </RouterLink>
-        <RouterLink :to="{ name: 'tasks' }" @click="close">
-          {{ t('navMain.tasks') }}
-        </RouterLink>
         <RouterLink :to="{ name: 'quiz' }">
           {{ t('navMain.quiz') }}
+        </RouterLink>
+        <RouterLink :to="{ name: 'about' }" @click="close">
+          {{ t('navMain.about') }}
         </RouterLink>
       </template>
     </TheHeader>
@@ -44,11 +38,11 @@ useHead({
         <RouterLink :to="{ name: 'home' }">
           {{ t('navMain.home') }}
         </RouterLink>
+        <RouterLink :to="{ name: 'quiz' }">
+          {{ t('navMain.quiz') }}
+        </RouterLink>
         <RouterLink :to="{ name: 'about' }">
           {{ t('navMain.about') }}
-        </RouterLink>
-        <RouterLink :to="{ name: 'tasks' }">
-          {{ t('navMain.tasks') }}
         </RouterLink>
         <RouterLink :to="{ name: 'designSystemHomepage' }">
           {{ t('navMain.designSystem') }}

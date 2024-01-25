@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMouse } from '@vueuse/core';
 import { useI18n } from 'vue-i18n';
-import AppGridLayout from '@/components/layout/AppGridLayout.vue';
+import AppContainer from '@/components/layout/AppContainer.vue';
 import PhoneFrame from '@/components/PhoneFrame.vue';
 import AppButton from '@/components/shared/AppButton.vue';
 
@@ -13,20 +13,22 @@ const { x, y } = useMouse();
 
 <template>
   <section class="hero">
-    <AppGridLayout class="hero__container">
+    <AppContainer class="hero__container">
       <div class="hero__layout">
         <div class="hero__main">
-          <h1 class="heading-1">
-            {{ t('pages.homepage.hero.title') }}
-          </h1>
-          <p class="mt-6 paragraph-lg text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad cum, distinctio esse eum iste laudantium, libero, maiores modi optio quidem quo ratione recusandae sed similique sint sit tenetur voluptate.
-          </p>
-          <p class="mt-6 lg:mt-14">
-            <AppButton color-variant="primary" size="lg">
-              {{ t('pages.homepage.hero.cta') }}
-            </AppButton>
-          </p>
+          <slot>
+            <h1 class="heading-1">
+              {{ t('pages.homepage.hero.title') }}
+            </h1>
+            <p class="mt-6 paragraph-lg text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad cum, distinctio esse eum iste laudantium, libero, maiores modi optio quidem quo ratione recusandae sed similique sint sit tenetur voluptate.
+            </p>
+            <p class="mt-6 lg:mt-14">
+              <AppButton color-variant="primary" size="lg">
+                {{ t('pages.homepage.hero.cta') }}
+              </AppButton>
+            </p>
+          </slot>
         </div>
         <div class="hero__illustration">
           <div class="-mx-4 [mask-image:linear-gradient(to_bottom,#F8F9FAFF_70%,transparent)] h-[448px] lg:-bottom-20 lg:-inset-x-10 lg:-top-10 lg:absolute lg:h-auto  lg:pt-10 lg:px-0 px-9 sm:mx-0 xl:-bottom-32">
@@ -38,7 +40,7 @@ const { x, y } = useMouse();
           </div>
         </div>
       </div>
-    </AppGridLayout>
+    </AppContainer>
   </section>
 </template>
 

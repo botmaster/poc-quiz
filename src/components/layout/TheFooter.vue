@@ -31,22 +31,6 @@ const { t } = useI18n();
         </div>
       </div>
       <div class="footer__footer">
-        <form class="footer__form" @submit.prevent="">
-          <label for="input-email-address" class="sr-only">{{ t('footer.form.emailAddress') }}</label>
-          <input
-            id="input-email-address"
-            type="email"
-            :aria-label="t('footer.form.emailAddress')"
-            :placeholder="t('footer.form.emailAddress')"
-            auto-complete="email"
-            required
-            class="form-input min-w-0 shrink text-xs lg:w-60 py-1"
-          >
-          <AppButton type="submit" color-variant="neutral" size="sm" class="flex-none rounded-l-none">
-            <span class="hidden lg:inline">{{ t('footer.form.joinOurNewsletter') }}</span>
-            <span class="lg:hidden">{{ t('footer.form.joinNewsletter') }}</span>
-          </AppButton>
-        </form>
         <p class="footer__footer-info">
           {{ t('footer.copyright', { year: 2023 }) }}
         </p>
@@ -84,7 +68,7 @@ const { t } = useI18n();
   }
 
   &__footer {
-    @apply flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6
+    @apply flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row md:justify-between md:pt-6
   }
 
   &__form {
