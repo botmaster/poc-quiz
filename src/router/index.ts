@@ -29,14 +29,6 @@ const routes = [
     },
   },
   {
-    path: '/tasks',
-    name: 'tasks',
-    component: () => import('@/views/ViewTasks.vue'),
-    meta: {
-      layout: layouts.TheAppLayout,
-    },
-  },
-  {
     path: '/design-system',
     name: 'designSystem',
     component: ViewDesignSystem,
