@@ -16,7 +16,6 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ACTION_GITHUB_TOKEN }}
           persist-credentials: false
           ref: ${{ github.ref }}
       - name: cat package.json
